@@ -47,22 +47,35 @@
   const form = $("#leadForm");
   const toast = $("#toast");
   if (form && toast) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = String(data.get("name") || "").trim();
-      const email = String(data.get("email") || "").trim();
-      const need = String(data.get("need") || "").trim();
+    form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      if (!name || !email || !need) {
-        toast.textContent = "Quick one — fill in name, email, and what you need most.";
-        toast.hidden = false;
-        return;
-      }
-      toast.textContent = "✅ Sent! Next step: add your calendar link (Calendly) or CRM form action.";
-      toast.hidden = false;
-      form.reset();
-      setTimeout(() => { toast.hidden = true; }, 5200);
-    });
+  const data = new FormData(form);
+  const name = String(data.get("name") || "").trim();
+  const email = String(data.get("email") || "").trim();
+  const need = String(data.get("need") || "").trim();
+
+  if (!name || !email || !need) {
+    toast.textContent = "Quick one — fill in name, email, and what you need most.";
+    toast.hidden = false;
+    return;
   }
+
+  try {
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    });
+
+    if (!res.ok) throw new Error("Network response not ok");
+
+    toast.textContent = "Sent — we’ll be in touch shortly.";
+    toast.hidden = false;
+    form.reset();
+  } catch (err) {
+    toast.textContent = "Something went wrong. Please try again.";
+    toast.hidden = false;
+  }
+});
 })();
