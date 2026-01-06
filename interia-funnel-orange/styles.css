@@ -75,9 +75,14 @@ ol{ margin:0; padding:0; }
 .topbar__inner{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0; }
 
 .brand{ display:flex; align-items:center; gap:10px; }
-.brand__mark{
-  height: 44px;
-  width:auto;
+.brand__mark {
+  height: 40px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: block;
+}
+
 }
 
 .brand__name{ font-family:"Alliance No.1","Satoshi",system-ui,sans-serif; font-size:18px; letter-spacing:.4px; color:rgba(255,255,255,.96); }
