@@ -291,48 +291,76 @@
             </ul>
           </div>
 
-         <form 
+    <form
   class="form"
   id="leadForm"
   name="lead"
   method="POST"
+  action="/"
   data-netlify="true"
+  netlify-honeypot="bot-field"
 >
-  <input type="hidden" name="form-name" value="lead">
+  <!-- Required for Netlify -->
+  <input type="hidden" name="form-name" value="lead" />
+
+  <!-- Spam protection (invisible) -->
+  <p hidden>
+    <label>
+      Don’t fill this out:
+      <input name="bot-field" />
+    </label>
+  </p>
 
   <label class="field">
     <span>Name</span>
-    <input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+    <input
+      type="text"
+      name="name"
+      autocomplete="name"
+      placeholder="Your name"
+      required
+    />
   </label>
 
+  <label class="field">
+    <span>Email</span>
+    <input
+      type="email"
+      name="email"
+      autocomplete="email"
+      placeholder="you@company.com"
+      required
+    />
+  </label>
 
-            <label class="field">
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required />
-            </label>
+  <label class="field">
+    <span>What do you need most?</span>
+    <select name="need" required>
+      <option value="" disabled selected>Select one</option>
+      <option>One-page funnel / landing page</option>
+      <option>Web build / redesign</option>
+      <option>Graphic design (ongoing)</option>
+      <option>Meta ads creative + scaling</option>
+      <option>All of the above</option>
+    </select>
+  </label>
 
-            <label class="field">
-              <span>What do you need most?</span>
-              <select name="need" required>
-                <option value="" selected disabled>Select one</option>
-                <option>One-page funnel / landing page</option>
-                <option>Web build / redesign</option>
-                <option>Graphic design (ongoing)</option>
-                <option>Meta ads creative + scaling</option>
-                <option>All of the above</option>
-              </select>
-            </label>
+  <label class="field">
+    <span>Quick note</span>
+    <textarea
+      name="message"
+      rows="4"
+      placeholder="Link your website + tell us your goal (sales, leads, bookings...)"
+    ></textarea>
+  </label>
 
-            <label class="field">
-              <span>Quick note</span>
-              <textarea name="message" rows="4" placeholder="Link your website + tell us your goal (sales, leads, bookings...)"></textarea>
-            </label>
+  <button type="submit" class="btn btn--dark btn--full">
+    Send
+  </button>
 
-            <button class="btn btn--dark btn--full" type="submit">Send</button>
-            <p class="micro micro--center">This form is demo-ready. Wire it to your email/CRM later (Brevo, HubSpot, etc.).</p>
+  <p class="toast" id="toast" hidden></p>
+</form>
 
-            <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
-          </form>
         </div>
       </div>
     </section>
