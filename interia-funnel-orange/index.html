@@ -291,7 +291,14 @@
             </ul>
           </div>
 
-          <form class="form" id="leadForm" novalidate>
+          <form 
+  class="form"
+  id="leadForm"
+  name="lead"
+  method="POST"
+  data-netlify="true"
+>
+
             <label class="field">
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" placeholder="Your name" required />
