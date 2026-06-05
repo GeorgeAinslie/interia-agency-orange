@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify Forms</title>
+  </head>
+  <body>
+    <form
+      name="contact"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="need">
+        <option value="funnel">Landing page / funnel build</option>
+        <option value="automation">Automated services</option>
+        <option value="web">Site redesign or new build</option>
+        <option value="creative">Ongoing performance creative</option>
+        <option value="meta">Meta creative &amp; testing structure</option>
+        <option value="all">Full-stack partnership</option>
+      </select>
+      <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
+    </form>
+  </body>
+</html>
