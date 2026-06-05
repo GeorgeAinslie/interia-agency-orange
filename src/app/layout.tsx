@@ -67,7 +67,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteName}, Lead generation & funnel studio`,
+    default: `${siteName}, Lead generation for business growth`,
     template: `%s · ${siteName}`,
   },
   description: defaultDescription,
@@ -88,12 +88,12 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: siteUrl,
     siteName,
-    title: `${siteName}, Lead generation & funnel studio`,
+    title: `${siteName}, Lead generation for business growth`,
     description: defaultDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteName}, Lead generation & funnel studio`,
+    title: `${siteName}, Lead generation for business growth`,
     description: defaultDescription,
   },
   robots: {
