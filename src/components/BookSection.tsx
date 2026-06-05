@@ -1,9 +1,11 @@
+import { ContactFormNetlify } from "@/components/ContactFormNetlify";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 
 export function BookSection() {
   return (
     <section id="book" className="section section--book">
+      <ContactFormNetlify />
       <div className="container book-grid">
         <Reveal className="book-grid__copy">
           <p className="eyebrow section__eyebrow">Contact</p>

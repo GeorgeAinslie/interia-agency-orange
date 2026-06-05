@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { CONTACT_FORM_NAME } from "@/lib/contact-form";
 
 export function LeadForm() {
   const [toast, setToast] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -14,19 +16,60 @@ export function LeadForm() {
     const need = String(data.get("need") || "").trim();
 
     if (!name || !email || !need) {
-      setToast("Please add your name, email, and primary focus so we can respond properly.");
+      setToast(
+        "Please add your name, email, and primary focus so we can respond properly.",
+      );
       return;
     }
 
-    setToast(
-      "Thank you, and we will reply within one business day. (Wire this form to your CRM or add a Server Action when ready.)",
-    );
-    form.reset();
-    window.setTimeout(() => setToast(null), 6000);
+    setSubmitting(true);
+
+    try {
+      const body = new URLSearchParams();
+      for (const [key, value] of data.entries()) {
+        body.append(key, String(value));
+      }
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Netlify form submission failed");
+      }
+
+      setToast("Thank you, we will reply within one business day.");
+      form.reset();
+    } catch {
+      setToast(
+        "Something went wrong. Please try again or email us directly.",
+      );
+    } finally {
+      setSubmitting(false);
+      window.setTimeout(() => setToast(null), 6000);
+    }
   }
 
   return (
-    <form className="lead-form" onSubmit={onSubmit} noValidate>
+    <form
+      className="lead-form"
+      name={CONTACT_FORM_NAME}
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+      noValidate
+    >
+      <input type="hidden" name="form-name" value={CONTACT_FORM_NAME} />
+
+      <p hidden>
+        <label>
+          Don&apos;t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
       <label className="field">
         <span className="field__label">Name</span>
         <input
@@ -73,8 +116,12 @@ export function LeadForm() {
         />
       </label>
 
-      <button type="submit" className="btn btn--primary btn--block">
-        Submit request
+      <button
+        type="submit"
+        className="btn btn--primary btn--block"
+        disabled={submitting}
+      >
+        {submitting ? "Sending…" : "Submit request"}
       </button>
 
       <p className="lead-form__fineprint">

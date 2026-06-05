@@ -1,6 +1,6 @@
 # Interia Studios — Next.js site
 
-Premium  marketing one-pager for **lead generation, funnels, and performance creative**. Built with the App Router, **Satoshi** + **Alliance No.1** (same pairing as the legacy `interia-funnel-orange` static funnel), light scroll motion via Framer Motion, and a **near-black page background** so photography and trust blocks sit cleanly (see `globals.css` `:root` for colours).
+Premium marketing one-pager for **lead generation, funnels, and performance creative**. Built with the App Router, **Satoshi** + **Alliance No.1** (same pairing as the legacy `interia-funnel-orange` static funnel), light scroll motion via Framer Motion, and a **near-black page background** so photography and trust blocks sit cleanly (see `globals.css` `:root` for colours).
 
 Fonts live in `src/fonts/` (Satoshi from Fontshare; Alliance is your licensed webfont—replace `alliance-no1/` if your agreement requires a different cut).
 
