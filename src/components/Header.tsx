@@ -18,7 +18,7 @@ export function Header() {
             width={interiaMarkImageLayout.width}
             height={interiaMarkImageLayout.height}
             className="brand__mark"
-            sizes="(max-width: 719px) 120px, 240px"
+            sizes="(max-width: 719px) 168px, 300px"
             priority
             unoptimized
           />

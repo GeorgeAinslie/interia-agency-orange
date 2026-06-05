@@ -118,18 +118,18 @@ ol {
 
 .brand__mark {
   display: block;
-  height: 32px;
+  height: 38px;
   width: auto;
-  max-width: min(38vw, 140px);
+  max-width: min(44vw, 168px);
 }
 
-/* Nav + CTA — equal columns across space to the right of the logo */
+/* Nav + CTA — flex on mobile, equal grid columns on desktop */
 .topbar__spread {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-items: center;
+  gap: 10px 20px;
   min-width: 0;
 }
 
@@ -139,7 +139,7 @@ ol {
   font-weight: 300;
   letter-spacing: 0.01em;
   color: var(--text);
-  padding: 0;
+  padding: 4px 0;
   white-space: nowrap;
   flex-shrink: 0;
   transition: opacity 0.2s var(--ease-out);
@@ -177,17 +177,27 @@ ol {
 }
 
 @media (max-width: 719px) {
+  .topbar__link {
+    display: none;
+  }
+
+  .topbar__spread {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 0;
+  }
+
+  .btn--topbar {
+    padding: 6px 10px;
+    font-size: 0.6875rem;
+  }
+
   .topbar-cta__label--long {
     display: none;
   }
 
   .topbar-cta__label--short {
     display: inline;
-  }
-
-  .btn--topbar {
-    padding: 6px 10px;
-    font-size: 0.6875rem;
   }
 }
 
@@ -833,15 +843,25 @@ ol {
   }
 
   .brand__mark {
-    height: 52px;
-    max-width: 280px;
+    height: 58px;
+    max-width: 300px;
+  }
+
+  .topbar__spread {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    gap: 0;
   }
 
   .topbar__link {
+    display: block;
     font-size: 0.9375rem;
+    padding: 0;
   }
 
   .btn--topbar {
+    margin-left: 0;
     padding: 9px 18px;
     font-size: 0.875rem;
   }
