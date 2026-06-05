@@ -30,7 +30,7 @@ export function LeadForm() {
         body.append(key, String(value));
       }
 
-      const response = await fetch("/", {
+      const response = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
@@ -57,8 +57,6 @@ export function LeadForm() {
       className="lead-form"
       name={CONTACT_FORM_NAME}
       method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
       onSubmit={onSubmit}
       noValidate
     >
