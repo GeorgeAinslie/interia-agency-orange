@@ -1,0 +1,205 @@
+import type { Metadata } from "next";
+import { CtaBand } from "@/components/CtaBand";
+import { PageHero } from "@/components/PageHero";
+import { siteReels, trustpilotReviews, websiteCases, websiteClients } from "@/lib/clients";
+
+export const metadata: Metadata = {
+  title: "Testimonials",
+  description:
+    "Work we can stand behind. Have a look.",
+  alternates: { canonical: "/testimonials" },
+};
+
+const chapters = [
+  {
+    label: "The problem",
+    title: "Good work. No pipeline.",
+    body: "Louis was running Bespoke Building Group on referrals. No dedicated ads. No page built to take a conversation. The work was never the issue. Being found was.",
+  },
+  {
+    label: "What we ran",
+    title: "Meta, Google, one page.",
+    body: "We built a page around the actual job, then pointed paid traffic at it. Clear offer. One ask. Ads in his account, not ours.",
+  },
+  {
+    label: "What changed",
+    title: "Enquiries worth ringing back.",
+    body: "Not a scoreboard. Homeowners ready to talk scope and timeline. Ads, page, follow-up pointing the same way.",
+  },
+] as const;
+
+export default function TestimonialsPage() {
+  return (
+    <main id="main">
+      <PageHero
+        plain
+        eyebrow="Testimonials"
+        title="See the results."
+        lead="Don&apos;t just take our word for it. Check out our happy customers."
+      />
+
+      <section className="logo-board" id="clients">
+        <div className="container">
+          <p className="logo-board__label">Some of our trusted clients</p>
+          <ul className="logo-rail" aria-label="Companies we have worked with">
+            {websiteClients.map((client) => (
+              <li
+                key={client.name}
+                className={
+                  client.name === "Georgia"
+                    ? "logo-rail__item--compact"
+                    : client.name === "Sprayaway"
+                      ? "logo-rail__item--sprayaway"
+                      : client.name === "Bespoke Building Group"
+                        ? "logo-rail__item--large"
+                        : undefined
+                }
+              >
+                <img src={`${client.logo}?v=2`} alt={client.name} />
+              </li>
+            ))}
+          </ul>
+
+          <ul className="trust-cards" aria-label="Trustpilot reviews">
+            {trustpilotReviews.map((review) => (
+              <li key={review.name} className="trust-card">
+                <div className="trust-card__top">
+                  <div className="trust-card__person">
+                    <span
+                      className={`trust-card__avatar trust-card__avatar--${review.tone}`}
+                      aria-hidden
+                    >
+                      {review.initials}
+                    </span>
+                    <div>
+                      <p className="trust-card__name">{review.name}</p>
+                      <p className="trust-card__meta">{review.location}</p>
+                    </div>
+                  </div>
+                  <img
+                    className="trust-card__brand"
+                    src="/assets/trustpilot/logo.svg"
+                    alt=""
+                    width={92}
+                    height={22}
+                  />
+                </div>
+                <img
+                  className="trust-card__stars"
+                  src="/assets/trustpilot/stars-5.svg"
+                  alt="Rated 5 out of 5 on Trustpilot"
+                  width={110}
+                  height={21}
+                />
+                <h3 className="trust-card__title">{review.title}</h3>
+                <p className="trust-card__body">{review.body}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section section--paper" id="sites">
+        <div className="container">
+          <div className="section__intro">
+            <p className="eyebrow">The work</p>
+            <h2 className="section__title">See our work.</h2>
+            <p className="section__subtitle">
+              Live work. More sits here as it comes in.
+            </p>
+          </div>
+
+          {websiteCases.map((site) => (
+            <article
+              key={site.name}
+              className={site.flip ? "site-case site-case--flip" : "site-case"}
+            >
+              <div className="site-case__phone">
+                <video
+                  className="site-case__video"
+                  src={site.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label={`${site.name} website`}
+                />
+              </div>
+              <div className="site-case__copy">
+                <p className="eyebrow">Website</p>
+                <h3 className="section__title">{site.name}</h3>
+                <p className="site-case__body">{site.body}</p>
+                <blockquote className="site-case__quote">
+                  <p>“{site.quote}”</p>
+                  <footer>
+                    <cite>{site.cite}</cite>
+                    <span className="site-case__quote-role">{site.role}</span>
+                  </footer>
+                </blockquote>
+              </div>
+            </article>
+          ))}
+
+          <ul className="site-reels">
+            {siteReels.map((site) => (
+              <li key={site.name} className="site-reel">
+                <div className="site-reel__chrome" aria-hidden>
+                  <span />
+                  <span />
+                  <span />
+                  <p>{site.name}</p>
+                </div>
+                <video
+                  className="site-reel__video"
+                  src={site.video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label={`${site.name} work`}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="section section--paper section--flush-top" id="case-studies">
+        <div className="container">
+          <p className="eyebrow">Case study</p>
+          <h2 className="section__title">Bespoke Building Group</h2>
+
+          <div className="case-study">
+            <div className="case-study__story">
+              {chapters.map((chapter) => (
+                <article key={chapter.label} className="case-study__chapter">
+                  <p className="case-study__chapter-label">{chapter.label}</p>
+                  <h3 className="case-study__chapter-title">{chapter.title}</h3>
+                  <p className="case-study__chapter-body">{chapter.body}</p>
+                </article>
+              ))}
+
+              <blockquote className="case-study__quote">
+                <p>
+                  “We were brilliant on site but invisible online. Now we have a
+                  proper landing page, ads that send people to the right place,
+                  and enquiries that are actually worth a call back.”
+                </p>
+                <footer>
+                  <cite>Louis Brackenbury</cite>
+                  <span className="case-study__quote-role">
+                    Bespoke Building Group
+                  </span>
+                </footer>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CtaBand title="If this is the job you need done, book the twenty minutes." />
+    </main>
+  );
+}
