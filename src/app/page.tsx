@@ -37,7 +37,7 @@ const objections = [
   },
   {
     q: "Is there a setup fee?",
-    a: "No setup fee, no deposit, no monthly retainer. Nothing up front.",
+    a: "No setup fee, no monthly retainer. Nothing up front.",
   },
   {
     q: "We already have someone on ads.",

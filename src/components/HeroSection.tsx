@@ -41,7 +41,7 @@ export function HeroSection() {
             </li>
             <li>
               <strong>Nothing up front</strong>
-              No setup fee, no deposit, no monthly retainer.
+              No setup fee, no monthly retainer.
             </li>
             <li>
               <strong>You pay when it works</strong>

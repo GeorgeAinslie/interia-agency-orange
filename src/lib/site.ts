@@ -5,4 +5,4 @@ export const siteUrl =
 export const siteName = "Interia Studios";
 
 export const defaultDescription =
-  "AI agents that run your ads. Proof before you pay. Nothing up front. Billing starts once the leads are landing.";
+  "Agents that help you build your business with more efficiency.";
