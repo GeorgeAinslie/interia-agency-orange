@@ -282,14 +282,10 @@ ol {
   max-width: 12ch;
 }
 
-.hero__title-lead {
-  color: var(--orange);
-}
-
 .hero__emphasis {
   font-style: italic;
   font-weight: 900;
-  color: inherit;
+  color: #ff7a47;
 }
 
 .hero__title-break {

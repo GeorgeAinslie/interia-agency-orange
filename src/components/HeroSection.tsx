@@ -6,10 +6,8 @@ export function HeroSection() {
       <div className="container hero__grid">
         <div className="hero__copy">
           <h1 className="hero__title">
-            <span className="hero__title-lead">
-              Grow your business{" "}
-              <em className="hero__emphasis">faster</em>.
-            </span>
+            Grow your business{" "}
+            <em className="hero__emphasis">faster</em>.
             <span className="hero__title-break">Keep more of what you make.</span>
           </h1>
           <p className="hero__lead">
