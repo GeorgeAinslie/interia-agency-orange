@@ -2176,6 +2176,138 @@ ol {
   display: block;
 }
 
+.work-stack {
+  display: grid;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.work-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.work-tile,
+.work-feature__stage {
+  position: relative;
+  overflow: hidden;
+  background: #161412;
+}
+
+.work-tile {
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.work-tile__media,
+.work-feature__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1) saturate(0.35) brightness(0.82);
+  transform: scale(1.04);
+  transition: filter 0.45s var(--ease-out), transform 0.55s var(--ease-out);
+}
+
+.work-tile__still {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 28px 22px;
+  background: #1c1916;
+}
+
+.work-tile__still img {
+  width: min(78%, 180px);
+  height: auto;
+  max-height: 42%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(1.15);
+  transition: filter 0.45s var(--ease-out);
+}
+
+.work-tile__still--empty {
+  background:
+    linear-gradient(160deg, #2a2622 0%, #141210 100%);
+}
+
+.work-tile__wash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 11, 10, 0.18) 0%,
+    rgba(12, 11, 10, 0.42) 45%,
+    rgba(12, 11, 10, 0.82) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.45s var(--ease-out);
+}
+
+.work-tile__name {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  margin: 0;
+  z-index: 1;
+  color: var(--light);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease-out);
+}
+
+.work-tile.is-live .work-tile__media,
+.work-feature.is-live .work-feature__video {
+  filter: none;
+  transform: scale(1);
+}
+
+.work-tile.is-live .work-tile__still img {
+  filter: none;
+}
+
+.work-tile.is-live .work-tile__wash,
+.work-feature.is-live .work-tile__wash {
+  opacity: 0;
+}
+
+.work-tile.is-live .work-tile__name {
+  opacity: 0;
+}
+
+.work-tile--reserved {
+  cursor: default;
+}
+
+.work-tile--reserved .work-tile__name {
+  color: var(--light-muted);
+  font-weight: 500;
+}
+
+.work-feature {
+  margin: 0;
+  overflow: hidden;
+}
+
+.work-feature__stage {
+  cursor: pointer;
+}
+
+.work-feature__video {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #111;
+  height: auto;
+}
+
 /* ——— Footer ——— */
 .site-footer {
   padding: 64px 0 48px;
@@ -2397,6 +2529,10 @@ ol {
 
   .site-reels {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr));
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .process-track {

@@ -29,35 +29,54 @@ export const websiteClients = [
   },
 ] as const;
 
-export const siteReels = [
-  {
-    name: "Bespoke Building Group",
-    video: "/assets/bespoke-building.mp4",
-  },
-] as const;
-
-export const websiteCases = [
+export const workGrid = [
   {
     name: "Sprayaway",
     video: "/assets/sprayaway.mp4",
-    flip: false,
-    body: "Jason was paying an annual fee for another site. We matched that yearly cost as a one-time price, and he ended up with a site he can actually call his own.",
-    quote:
-      "From receiving a call from an unknown number, to working on a project with someone I learned to trust, I’m happy we put this website together.",
-    cite: "Jason",
-    role: "Sprayaway",
+    poster: "/assets/work/sprayaway.jpg",
   },
   {
     name: "Claire Harman Fitness",
     video: "/assets/claire-harman-fitness.mp4",
-    flip: true,
-    body: "Claire knew what she wanted and how she wanted it. Together we brought something to life that spoke to her brand and her personality.",
-    quote:
-      "George was so helpful throughout the whole process. He was open to my ideas and committed to making the best version of the vision I had in my head. Now I’ve got something I can call mine.",
-    cite: "Claire",
-    role: "Claire Harman Fitness",
+    poster: "/assets/work/claire-harman-fitness.jpg",
+  },
+  {
+    name: "Colescrete Construction",
+    video: "/assets/colescrete.mp4",
+    poster: "/assets/work/colescrete.jpg",
+  },
+  {
+    name: "K & T Autos",
+    video: "/assets/k-and-t-autos.mp4",
+    poster: "/assets/work/k-and-t-autos.jpg",
+  },
+  {
+    name: "A.O Drains",
+    video: "/assets/ao-drains.mp4",
+    poster: "/assets/work/ao-drains.jpg",
+  },
+  {
+    name: "Bali Getaway",
+    video: "/assets/bali-getaway.mp4",
+    poster: "/assets/work/bali-getaway.jpg",
+  },
+  {
+    name: "ACA Plastering",
+    video: "/assets/aca-plastering.mp4",
+    poster: "/assets/work/aca-plastering.jpg",
+  },
+  {
+    name: "Nawa Barber",
+    video: "/assets/nawa-barber.mp4",
+    poster: "/assets/work/nawa-barber.jpg",
   },
 ] as const;
+
+export const featuredWork = {
+  name: "Bespoke Building Group",
+  video: "/assets/bespoke-building.mp4",
+  poster: "/assets/work/bespoke-building.jpg",
+} as const;
 
 export const trustpilotReviews = [
   {

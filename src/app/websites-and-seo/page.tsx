@@ -269,7 +269,7 @@ export default function WebsitesAndSeoPage() {
 
       <CtaBand
         title="The first build does the heavy lift. Then we keep it covered."
-        text="We look at the site. We show the plan. You decide. Book a call. Nothing to commit to first."
+        text="Tell us what you need. A site you have, or one you still need. Nothing to commit to first."
       />
     </main>
   );

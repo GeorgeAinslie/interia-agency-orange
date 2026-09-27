@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
-import { siteReels, trustpilotReviews, websiteCases, websiteClients } from "@/lib/clients";
+import { WorkFeature, WorkGrid } from "@/components/WorkGrid";
+import { featuredWork, trustpilotReviews, websiteClients, workGrid } from "@/lib/clients";
 
 export const metadata: Metadata = {
   title: "Testimonials",
@@ -105,64 +106,14 @@ export default function TestimonialsPage() {
             <p className="eyebrow">The work</p>
             <h2 className="section__title">See our work.</h2>
             <p className="section__subtitle">
-              Live work. More sits here as it comes in.
+              Hover a site. It comes into colour and plays.
             </p>
           </div>
 
-          {websiteCases.map((site) => (
-            <article
-              key={site.name}
-              className={site.flip ? "site-case site-case--flip" : "site-case"}
-            >
-              <div className="site-case__phone">
-                <video
-                  className="site-case__video"
-                  src={site.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label={`${site.name} website`}
-                />
-              </div>
-              <div className="site-case__copy">
-                <p className="eyebrow">Website</p>
-                <h3 className="section__title">{site.name}</h3>
-                <p className="site-case__body">{site.body}</p>
-                <blockquote className="site-case__quote">
-                  <p>“{site.quote}”</p>
-                  <footer>
-                    <cite>{site.cite}</cite>
-                    <span className="site-case__quote-role">{site.role}</span>
-                  </footer>
-                </blockquote>
-              </div>
-            </article>
-          ))}
-
-          <ul className="site-reels">
-            {siteReels.map((site) => (
-              <li key={site.name} className="site-reel">
-                <div className="site-reel__chrome" aria-hidden>
-                  <span />
-                  <span />
-                  <span />
-                  <p>{site.name}</p>
-                </div>
-                <video
-                  className="site-reel__video"
-                  src={site.video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label={`${site.name} work`}
-                />
-              </li>
-            ))}
-          </ul>
+          <div className="work-stack">
+            <WorkGrid items={workGrid} />
+            <WorkFeature item={featuredWork} />
+          </div>
         </div>
       </section>
 
@@ -199,7 +150,10 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      <CtaBand title="If this is the job you need done, book the twenty minutes." />
+      <CtaBand
+        title="If this is the job you need done, book the twenty minutes."
+        text="Tell us what you need. A site you have, or one you still need. Nothing to commit to first."
+      />
     </main>
   );
 }
