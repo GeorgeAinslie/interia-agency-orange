@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
+import { LogoCarousel } from "@/components/LogoCarousel";
 import { WorkFeature, WorkGrid } from "@/components/WorkGrid";
-import { featuredWork, trustpilotReviews, websiteClients, workGrid } from "@/lib/clients";
+import { featuredWork, trustpilotReviews, workGrid } from "@/lib/clients";
 
 export const metadata: Metadata = {
   title: "Testimonials",
@@ -42,24 +43,7 @@ export default function TestimonialsPage() {
       <section className="logo-board" id="clients">
         <div className="container">
           <p className="logo-board__label">Some of our trusted clients</p>
-          <ul className="logo-rail" aria-label="Companies we have worked with">
-            {websiteClients.map((client) => (
-              <li
-                key={client.name}
-                className={
-                  client.name === "Georgia"
-                    ? "logo-rail__item--compact"
-                    : client.name === "Sprayaway"
-                      ? "logo-rail__item--sprayaway"
-                      : client.name === "Bespoke Building Group"
-                        ? "logo-rail__item--large"
-                        : undefined
-                }
-              >
-                <img src={`${client.logo}?v=2`} alt={client.name} />
-              </li>
-            ))}
-          </ul>
+          <LogoCarousel />
 
           <ul className="trust-cards" aria-label="Trustpilot reviews">
             {trustpilotReviews.map((review) => (

@@ -1,6 +1,7 @@
 import { CtaBand } from "@/components/CtaBand";
 import { HeroSection } from "@/components/HeroSection";
 import { HowItWorks } from "@/components/HowItWorks";
+import { StorySpine } from "@/components/StorySpine";
 
 const industries = [
   {
@@ -55,12 +56,15 @@ export default function Home() {
       <HeroSection />
 
       <section className="section section--paper">
-        <div className="container split">
-          <div>
+        <div className="container why-block">
+          <div className="why-title">
             <p className="eyebrow">Why this exists</p>
-            <h2 className="section__title">The work is fine. The pipeline is not.</h2>
+            <h2 className="section__title">
+              The work is fine.
+              <span>The pipeline is not.</span>
+            </h2>
           </div>
-          <div className="prose">
+          <div className="prose why-copy">
             <p>
               Most businesses we speak to already know how to do the job. What
               they do not have is a reliable way to put the right people in
@@ -122,9 +126,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--ink">
+      <StorySpine>
+      <section className="section section--ink section--inset">
         <div className="container">
-          <div className="section__intro">
+          <div className="section__intro" data-spine-node data-spine-leave="bottom">
             <p className="eyebrow eyebrow--light">The shift</p>
             <h2 className="section__title section__title--light">
               Real-time growth does not wait.
@@ -139,9 +144,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--paper">
+      <section className="section section--paper section--inset">
         <div className="container visual-split visual-split--flip">
-          <div>
+          <div data-spine-node data-spine-arrive="left" data-spine-leave="bottom">
             <p className="eyebrow">The future</p>
             <h2 className="section__title">
               AI is the next layer of the digital world.
@@ -162,6 +167,57 @@ export default function Home() {
           </figure>
         </div>
       </section>
+
+      <section className="section section--ink section--inset">
+        <div className="container">
+          <div
+            className="story-block story-block--left"
+            data-spine-node
+            data-spine-arrive="right"
+            data-spine-leave="right"
+          >
+            <h2 className="section__title section__title--light">
+              Why we are different
+            </h2>
+            <p className="section__subtitle section__subtitle--light">
+              We built a tool that does this for you. Connects the accounts.
+              Builds the campaign. Puts a page under it that can take the
+              enquiry. Then it stays on the numbers. Cuts what dies. Pushes what
+              works.
+            </p>
+            <p className="story-block__close">
+              It is the future of marketing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section section--paper section--inset">
+        <div className="container">
+          <div
+            className="story-block story-block--right"
+            data-spine-node
+            data-spine-arrive="top"
+          >
+            <h2 className="section__title">Why we built this</h2>
+            <p className="section__subtitle">
+              We decided the work belongs in new technology. The numbers can
+              be read as they happen. The next move can happen in the market.
+              That is how you get past human error. By putting the job in the
+              hands of a system that does not blink. Overseen by an experienced
+              team.
+            </p>
+            <p className="section__subtitle">
+              We built this so delivery could be faster, tighter, and based on
+              what the data actually says. Live, then iterate.
+            </p>
+            <p className="story-block__close">
+              Will you be part of the future?
+            </p>
+          </div>
+        </div>
+      </section>
+      </StorySpine>
 
       <section className="section section--paper">
         <div className="container">

@@ -250,23 +250,6 @@ export default function WebsitesAndSeoPage() {
         </div>
       </section>
 
-      <section className="section section--ink">
-        <div className="container seo-proof">
-          <div>
-            <p className="eyebrow eyebrow--light">See our previous work</p>
-            <h2 className="section__title section__title--light">
-              Don&apos;t just take our word for it.
-            </h2>
-            <p className="section__subtitle section__subtitle--light">
-              See the results.
-            </p>
-          </div>
-          <Link className="btn btn--light" href="/testimonials">
-            See the results
-          </Link>
-        </div>
-      </section>
-
       <CtaBand
         title="The first build does the heavy lift. Then we keep it covered."
         text="Tell us what you need. A site you have, or one you still need. Nothing to commit to first."
