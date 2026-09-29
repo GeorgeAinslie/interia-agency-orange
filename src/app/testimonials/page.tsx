@@ -90,7 +90,7 @@ export default function TestimonialsPage() {
             <p className="eyebrow">The work</p>
             <h2 className="section__title">See our work.</h2>
             <p className="section__subtitle">
-              Hover a site. It comes into colour and plays.
+              Hover or tap a site. It comes into colour and plays.
             </p>
           </div>
 

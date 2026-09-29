@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type PointerEvent } from "react";
 
 type WorkItem = {
   name: string;
@@ -21,17 +21,18 @@ export function WorkGrid({ items }: { items: readonly WorkItem[] }) {
 }
 
 export function WorkFeature({ item }: { item: WorkItem }) {
-  const hover = useHoverPlayback();
+  const playback = useTilePlayback();
 
   return (
     <figure
-      className={`work-feature${hover.live ? " is-live" : ""}`}
-      onPointerEnter={hover.enter}
-      onPointerLeave={hover.leave}
+      className={`work-feature${playback.live ? " is-live" : ""}`}
+      onPointerEnter={playback.onPointerEnter}
+      onPointerLeave={playback.onPointerLeave}
+      onClick={playback.onClick}
     >
       <div className="work-feature__stage">
         <video
-          ref={hover.ref}
+          ref={playback.ref}
           className="work-feature__video"
           src={item.video}
           poster={item.poster}
@@ -48,17 +49,18 @@ export function WorkFeature({ item }: { item: WorkItem }) {
 }
 
 function WorkTile({ item }: { item: WorkItem }) {
-  const hover = useHoverPlayback();
+  const playback = useTilePlayback();
 
   return (
     <li
-      className={`work-tile${hover.live ? " is-live" : ""}${item.reserved ? " work-tile--reserved" : ""}`}
-      onPointerEnter={item.reserved ? undefined : hover.enter}
-      onPointerLeave={item.reserved ? undefined : hover.leave}
+      className={`work-tile${playback.live ? " is-live" : ""}${item.reserved ? " work-tile--reserved" : ""}`}
+      onPointerEnter={item.reserved ? undefined : playback.onPointerEnter}
+      onPointerLeave={item.reserved ? undefined : playback.onPointerLeave}
+      onClick={item.reserved ? undefined : playback.onClick}
     >
       {item.video ? (
         <video
-          ref={hover.ref}
+          ref={playback.ref}
           className="work-tile__media"
           src={item.video}
           poster={item.poster}
@@ -81,16 +83,26 @@ function WorkTile({ item }: { item: WorkItem }) {
   );
 }
 
-function useHoverPlayback() {
+function canHover() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  );
+}
+
+function useTilePlayback() {
   const ref = useRef<HTMLVideoElement>(null);
+  const liveRef = useRef(false);
   const [live, setLive] = useState(false);
 
-  function enter() {
+  function play() {
+    liveRef.current = true;
     setLive(true);
     void ref.current?.play().catch(() => undefined);
   }
 
-  function leave() {
+  function stop() {
+    liveRef.current = false;
     setLive(false);
     const video = ref.current;
     if (!video) return;
@@ -98,5 +110,21 @@ function useHoverPlayback() {
     video.currentTime = 0;
   }
 
-  return { ref, live, enter, leave };
+  function onPointerEnter(event: PointerEvent<HTMLElement>) {
+    if (event.pointerType !== "mouse" || !canHover()) return;
+    play();
+  }
+
+  function onPointerLeave(event: PointerEvent<HTMLElement>) {
+    if (event.pointerType !== "mouse" || !canHover()) return;
+    stop();
+  }
+
+  function onClick() {
+    if (canHover()) return;
+    if (liveRef.current) stop();
+    else play();
+  }
+
+  return { ref, live, onPointerEnter, onPointerLeave, onClick };
 }

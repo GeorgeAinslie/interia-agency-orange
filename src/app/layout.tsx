@@ -116,8 +116,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: "/assets/favicon.png",
-    apple: "/assets/favicon.png",
+    icon: [{ url: "/assets/interia-icon.png", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/assets/apple-touch.png", type: "image/png", sizes: "180x180" }],
+    shortcut: "/assets/interia-icon.png",
   },
 };
 
