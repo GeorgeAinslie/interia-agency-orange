@@ -2096,50 +2096,69 @@ ol {
 
 .logo-carousel {
   overflow: hidden;
-  container-type: inline-size;
-  width: min(100%, 560px);
+  isolation: isolate;
+  width: min(100%, 640px);
   margin: 0 auto 8px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
 }
 
 .logo-carousel__track {
   display: flex;
   width: max-content;
-  animation: logo-marquee 28s linear infinite;
+  animation: logo-marquee 32s linear infinite;
 }
 
 .logo-carousel__set {
   list-style: none;
   display: flex;
   flex-shrink: 0;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
 
 .logo-carousel li {
-  flex: 0 0 calc(100cqi / 3);
+  flex: 0 0 auto;
   height: 56px;
   display: grid;
   place-items: center;
+  padding: 0 28px;
 }
 
 .logo-carousel img {
   max-height: 32px;
   width: auto;
-  max-width: 58%;
+  max-width: 132px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
 .logo-carousel__item--compact img {
   max-height: 16px;
+  max-width: 120px;
 }
 
 .logo-carousel__item--sprayaway img {
   max-height: 20px;
+  max-width: 128px;
 }
 
 .logo-carousel__item--large img {
-  max-height: 44px;
+  max-height: 40px;
+  max-width: 72px;
 }
 
 @keyframes logo-marquee {
