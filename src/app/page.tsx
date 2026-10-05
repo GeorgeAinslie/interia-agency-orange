@@ -1,7 +1,8 @@
 import { CampaignForm } from "@/components/funnel/CampaignForm";
 import { ImproveCurve } from "@/components/funnel/ImproveCurve";
+import { ProofVideo } from "@/components/funnel/ProofVideo";
 import { SpendTape } from "@/components/funnel/SpendTape";
-import { dealRows, funnelFaqs, processSteps, proofChapters } from "@/lib/funnel";
+import { dealRows, funnelFaqs, processSteps } from "@/lib/funnel";
 
 export default function Home() {
   return (
@@ -119,27 +120,12 @@ export default function Home() {
 
       <section className="funnel-sec" id="proof">
         <div className="funnel-wrap">
+          <p className="proof-kicker">Proof</p>
           <h2 className="funnel-h2">
-            Bespoke Building Group. Enquiries worth ringing back.
+            Don’t just take our word for it.
+            <em>Here’s proof.</em>
           </h2>
-          <p className="funnel-lede">
-            One client we can stand behind. The work was never the issue. Being
-            found was.
-          </p>
-          <ol className="proof-list">
-            {proofChapters.map((chapter) => (
-              <li key={chapter.title}>
-                <p className="proof-list__when">{chapter.when}</p>
-                <h3>{chapter.title}</h3>
-                <p>{chapter.body}</p>
-              </li>
-            ))}
-          </ol>
-          <blockquote className="proof-quote">
-            “We were brilliant on site but invisible online. Now we have a
-            proper landing page, ads that send people to the right place, and
-            enquiries that are actually worth a call back.”
-          </blockquote>
+          <ProofVideo />
           <div className="funnel-moment">
             <p className="funnel-moment__h">Want this for your business?</p>
             <a className="btn funnel-btn funnel-btn--big" href="#campaign">

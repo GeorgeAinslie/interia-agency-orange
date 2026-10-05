@@ -6,10 +6,13 @@ export const primaryNav = [
 ] as const;
 
 /** Header only — pages stay live, just not linked from the top bar. */
-export const headerNav = primaryNav.filter(
-  (item) =>
-    item.href !== "/websites-and-seo" && item.href !== "/testimonials",
-);
+export const headerNav = [
+  { href: "/#proof", label: "Proof" },
+  ...primaryNav.filter(
+    (item) =>
+      item.href !== "/websites-and-seo" && item.href !== "/testimonials",
+  ),
+] as const;
 
 export const legalNav = [
   { href: "/privacy", label: "Privacy" },
