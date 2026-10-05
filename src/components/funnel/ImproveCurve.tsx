@@ -113,8 +113,10 @@ export function ImproveCurve() {
 
     function update() {
       frame = 0;
-      const rect = track.getBoundingClientRect();
-      const travel = Math.max(1, track.offsetHeight - window.innerHeight);
+      const el = trackRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const travel = Math.max(1, el.offsetHeight - window.innerHeight);
       const next = clamp(-rect.top / travel);
 
       if (rect.top > 0) {

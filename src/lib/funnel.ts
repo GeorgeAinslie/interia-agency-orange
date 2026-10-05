@@ -51,7 +51,14 @@ export const spendSteps = [
   },
 ] as const;
 
-export const dealRows = [
+export type DealRow = {
+  label: string;
+  usual: string;
+  interia: string;
+  note?: string;
+};
+
+export const dealRows: DealRow[] = [
   {
     label: "Before your first lead",
     usual: "A fee, salary or subscription from day one",
@@ -84,7 +91,7 @@ export const dealRows = [
     interia: "Your £500 deposit back",
     note: "If you ran the agreed £1,500 of ads in your first 30 days.",
   },
-] as const;
+];
 
 export const processSteps = [
   {
