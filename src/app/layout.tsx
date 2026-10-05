@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { SiteFooter } from "@/components/SiteFooter";
 import { defaultDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
+import "./funnel.css";
 
 const satoshi = localFont({
   src: [

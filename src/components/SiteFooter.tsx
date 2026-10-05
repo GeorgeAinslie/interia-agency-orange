@@ -27,7 +27,7 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
-          <Link href="#book">Book a call</Link>
+          <Link href="/#campaign">Get my free campaign</Link>
         </nav>
 
         <nav className="site-footer__legal-nav" aria-label="Legal">

@@ -5,10 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { interiaMarkAsset, interiaMarkImageLayout } from "@/lib/interia-mark";
-import { primaryNav } from "@/lib/nav";
+import { headerNav } from "@/lib/nav";
 
 export function Header() {
   const pathname = usePathname();
+  const home = pathname === "/";
+  const ctaHref = home ? "#campaign" : "#book";
+  const ctaLong = home ? "Get my free campaign" : "Book a call";
+  const ctaShort = home ? "Get it free" : "Book";
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -39,7 +43,7 @@ export function Header() {
         </Link>
 
         <nav className="topbar__spread" aria-label="Primary">
-          {primaryNav.map((item) => (
+          {headerNav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -48,12 +52,12 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link className="btn btn--topbar btn--topbar-cta" href="#book">
+          <Link className="btn btn--topbar btn--topbar-cta" href={ctaHref}>
             <span className="topbar-cta__label topbar-cta__label--long">
-              Book a call
+              {ctaLong}
             </span>
             <span className="topbar-cta__label topbar-cta__label--short">
-              Book
+              {ctaShort}
             </span>
           </Link>
         </nav>
@@ -74,17 +78,17 @@ export function Header() {
         className={`topbar__drawer${open ? " is-open" : ""}`}
       >
         <nav className="container topbar__drawer-nav" aria-label="Mobile">
-          {primaryNav.map((item) => (
+          {headerNav.map((item) => (
             <Link key={item.href} href={item.href}>
               {item.label}
             </Link>
           ))}
           <Link
             className="btn btn--primary"
-            href="#book"
+            href={ctaHref}
             onClick={() => setOpen(false)}
           >
-            Book a call
+            {ctaLong}
           </Link>
         </nav>
       </div>

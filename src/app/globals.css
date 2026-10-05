@@ -1,6 +1,6 @@
 :root {
-  --orange: #f34716;
-  --orange-deep: #d63d12;
+  --orange: #3b82f6;
+  --orange-deep: #2563eb;
   --ink: #0c0b0a;
   --ink-soft: #161412;
   --paper: #f3efe8;
@@ -285,7 +285,7 @@ ol {
 .hero__emphasis {
   font-style: italic;
   font-weight: 900;
-  color: #ff7a47;
+  color: #7eb6ff;
 }
 
 .hero__title-break {
