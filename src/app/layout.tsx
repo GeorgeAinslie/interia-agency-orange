@@ -117,9 +117,13 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   icons: {
-    icon: [{ url: "/assets/interia-icon.png", type: "image/png", sizes: "512x512" }],
-    apple: [{ url: "/assets/apple-touch.png", type: "image/png", sizes: "180x180" }],
-    shortcut: "/assets/interia-icon.png",
+    icon: [
+      { url: "/favicon.ico?v=3", sizes: "48x48" },
+      { url: "/assets/interia-icon.png?v=3", type: "image/png", sizes: "512x512" },
+      { url: "/icon.png?v=3", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/assets/apple-touch.png?v=3", type: "image/png", sizes: "180x180" }],
+    shortcut: "/favicon.ico?v=3",
   },
 };
 
