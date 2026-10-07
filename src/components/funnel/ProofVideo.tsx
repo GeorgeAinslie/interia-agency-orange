@@ -88,7 +88,9 @@ export function ProofVideo() {
 
       event.preventDefault();
       clearProofHash();
-      root.scrollIntoView({ behavior: "smooth", block: "center" });
+      const section = sectionRef.current;
+      if (!section) return;
+      section.scrollIntoView({ behavior: "smooth", block: "center" });
       window.setTimeout(() => playProof({ restart: true }), 280);
     }
 
@@ -106,7 +108,7 @@ export function ProofVideo() {
       <video
         ref={videoRef}
         className="proof-video__player"
-        src="/assets/proof.mp4"
+        src="/assets/proof.mp4?v=2"
         playsInline
         preload="metadata"
         controls={false}
