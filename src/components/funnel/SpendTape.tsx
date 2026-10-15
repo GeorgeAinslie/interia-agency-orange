@@ -8,31 +8,23 @@ const frames = [
     label: "£25,000 in ads",
     spend: 25000,
     fee: 7500,
-    agency: 8800,
-    hire: 8900,
   },
   {
     id: "10k",
     label: "£10,000 in ads",
     spend: 10000,
     fee: 3000,
-    agency: 4300,
-    hire: 6600,
   },
   {
     id: "paused",
     label: "Ads paused",
     spend: 0,
     fee: 0,
-    agency: 0,
-    hire: 0,
   },
 ] as const;
 
 const pausedCopy = {
   spend: "Ads paused",
-  agency: "the retainer and the contract still run",
-  hire: "the salaries still run",
 } as const;
 
 function clamp(value: number, min = 0, max = 1) {
@@ -85,9 +77,6 @@ function sample(progress: number) {
 
   const spend = lerp(from.spend, to.spend, local);
   const fee = lerp(from.fee, to.fee, local);
-  // Keep last live comparison figures until pause text takes over.
-  const liveAgency = fi === 2 ? frames[1].agency : lerp(from.agency, to.agency, local);
-  const liveHire = fi === 2 ? frames[1].hire : lerp(from.hire, to.hire, local);
   const maxSpend = frames[0].spend;
   const live = 1 - intoPaused;
 
@@ -96,12 +85,8 @@ function sample(progress: number) {
     intoPaused,
     spendMoney: money(spend),
     feeLabel: money(fee),
-    agencyMoney: `about ${money(liveAgency)}`,
-    hireMoney: `about ${money(liveHire)}`,
     spendBar: (spend / maxSpend) * live,
     feeBar: (fee / maxSpend) * live,
-    agencyBar: (liveAgency / maxSpend) * live,
-    hireBar: (liveHire / maxSpend) * live,
   };
 }
 
@@ -187,14 +172,16 @@ export function SpendTape() {
   function goToStep(index: number) {
     const track = trackRef.current;
     if (!track) return;
-    const targets = [0.08, 0.48, 0.9];
+    // Scroll progress runs bottom → top, so the paused step sits near the start.
+    const targets = [0.92, 0.52, 0.1];
     const target = targets[index] ?? 0;
     const travel = Math.max(1, track.offsetHeight - window.innerHeight);
     const top = track.getBoundingClientRect().top + window.scrollY + travel * target;
     window.scrollTo({ top, behavior: "smooth" });
   }
 
-  const view = useMemo(() => sample(progress), [progress]);
+  // Enter on the bottom step (ads paused) and climb as the page scrolls down.
+  const view = useMemo(() => sample(1 - progress), [progress]);
 
   return (
     <div className="spend-tape" ref={trackRef}>
@@ -202,11 +189,11 @@ export function SpendTape() {
         <div className="spend-tape__inner">
           <div className="spend-tape__copy">
             <h2 className="funnel-h2">
-              <span>Spend £10k on ads.</span>
-              <em>Pay us £3k.</em>
+              <span>30% of your ad spend.</span>
+              <em>Until your first lead.</em>
             </h2>
             <p className="funnel-lede spend-tape__lede">
-              30% of your ad spend, everything included. No ads, no fee.
+              Spend £1.5k, pay us £450. Spend £10k, pay us £3k.
             </p>
             <ol className="spend-tape__steps">
               {frames.map((item, index) => (
@@ -246,41 +233,11 @@ export function SpendTape() {
 
             <div className="spend-card__block">
               <div className="spend-card__row spend-card__row--fee">
-                <span>You pay us</span>
+                <span>Our cut</span>
                 <strong className="spend-card__value">{view.feeLabel}</strong>
               </div>
-              <div className="spend-card__bar spend-card__bar--fee">
+              <div className="spend-card__bar spend-card__bar--fee spend-card__bar--last">
                 <i style={{ transform: `scaleX(${view.feeBar})` }} />
-              </div>
-            </div>
-
-            <div className="spend-card__cmp-block">
-              <p className="spend-card__cmp">The same work elsewhere, all-in</p>
-              <div className="spend-card__row spend-card__row--cmp">
-                <span>A typical agency</span>
-                <b className="spend-card__value">
-                  <SequenceFade
-                    primary={view.agencyMoney}
-                    secondary={pausedCopy.agency}
-                    amount={view.intoPaused}
-                  />
-                </b>
-              </div>
-              <div className="spend-card__bar spend-card__bar--cmp">
-                <i style={{ transform: `scaleX(${view.agencyBar})` }} />
-              </div>
-              <div className="spend-card__row spend-card__row--cmp">
-                <span>An in-house team</span>
-                <b className="spend-card__value">
-                  <SequenceFade
-                    primary={view.hireMoney}
-                    secondary={pausedCopy.hire}
-                    amount={view.intoPaused}
-                  />
-                </b>
-              </div>
-              <div className="spend-card__bar spend-card__bar--cmp spend-card__bar--last">
-                <i style={{ transform: `scaleX(${view.hireBar})` }} />
               </div>
             </div>
           </div>

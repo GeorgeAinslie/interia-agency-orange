@@ -453,12 +453,6 @@ body:has(.funnel) .btn--topbar-cta {
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
 }
 
-.spend-card__cmp-block {
-  margin-top: 6px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(247, 244, 238, 0.1);
-}
-
 .spend-card__row {
   display: flex;
   justify-content: space-between;
@@ -524,29 +518,6 @@ body:has(.funnel) .btn--topbar-cta {
 
 .spend-card__bar--fee i {
   background: var(--orange);
-}
-
-.spend-card__bar--cmp i {
-  background: rgba(247, 244, 238, 0.26);
-}
-
-.spend-card__cmp {
-  margin: 0 0 14px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(247, 244, 238, 0.4);
-}
-
-.spend-card__row--cmp {
-  font-size: 0.88rem;
-}
-
-.spend-card__row--cmp .spend-card__value {
-  font-weight: 600;
-  font-size: 0.95rem;
-  max-width: 58%;
 }
 
 .deal-table {

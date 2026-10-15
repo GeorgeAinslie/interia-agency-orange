@@ -88,7 +88,7 @@ export const dealRows: DealRow[] = [
   {
     label: "No lead in 30 days",
     usual: "Paid anyway, no refund",
-    interia: "Your £500 deposit back",
+    interia: "Your £250 deposit back",
     note: "If you ran the agreed £1,500 of ads in your first 30 days.",
   },
 ];
@@ -110,14 +110,14 @@ export const processSteps = [
     n: "3",
     when: "When you’re ready",
     title: "We launch and keep improving",
-    body: "Put down the £500 deposit and connect your ad account. We go live and keep making it better. No fee until your first lead.",
+    body: "Put down the £250 deposit and connect your ad account. We go live and keep making it better. No fee until your first lead.",
   },
 ] as const;
 
 export const funnelFaqs = [
   {
     q: "What’s the catch?",
-    a: "A £500 deposit and at least £1,500 of ads in your first 30 days. The deposit counts toward your first fees. If you run those ads and no verified lead arrives within 30 days, it comes back. It also comes back if we never deliver a campaign ready to launch.",
+    a: "A £250 deposit and at least £1,500 of ads in your first 30 days. The deposit counts toward your first fees. If you run those ads and no verified lead arrives within 30 days, it comes back. It also comes back if we never deliver a campaign ready to launch.",
   },
   {
     q: "Who pays for the ads?",
